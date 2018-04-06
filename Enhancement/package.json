@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "start http://localhost:3000 && node index.js",
+    "start": "start http://localhost:3001 && nodemon index.js",
     "cluster-info": "pm2 start index.js -i 0",
     "cluster-monitor": "pm2 monit",
     "cluster-delete": "pm2 delete index"
@@ -13,6 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "nodemon": "^1.17.3",
+    "webworker-threads": "^0.7.13"
   }
 }
