@@ -7,7 +7,18 @@ const client = redis.createClient(redisUrl);
 client.get = util.promisify(client.get);
 const exec = mongoose.Query.prototype.exec;
 
+// Create a cache function to make it toggleable
+mongoose.Query.prototype.cache = function() {
+    this.useCache = true;
+    return this;
+};
+
 mongoose.Query.prototype.exec = async function() {
+    // If use of cache is set to false, execute and return the query instead
+    if(!this.useCache) {
+        return exec.apply(this, arguments);
+    }
+
     // Assign collection and query name as unique key
     const key = Object.assign({}, this.getQuery(), {
         collection: this.mongooseCollection.name
