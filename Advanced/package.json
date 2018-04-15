@@ -10,7 +10,8 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "heroku-postbuild": "npm run build",
-    "update": "npm install --verbose && npm update --verbose && cd client && npm install --verbose && npm update --verbose"
+    "update": "npm install --verbose && npm update --verbose && cd client && npm install --verbose && npm update --verbose",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
