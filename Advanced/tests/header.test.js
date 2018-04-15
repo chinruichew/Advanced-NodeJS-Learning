@@ -24,4 +24,5 @@ test('The header has correct text', async() => {
 test('Clicking login starts oauth flow', async() => {
     await page.click('.right a');
     const url = page.url();
+    expect(url).toMatch(/accounts\.google\.com/);
 });
